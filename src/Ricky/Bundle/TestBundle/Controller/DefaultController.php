@@ -65,6 +65,10 @@ class DefaultController extends Controller
 
         $em->flush();
 
+        sleep(1);
+        $post2->setTitle("this is post2 - modify");
+        $em->persist($post2);
+        $em->flush();
         return array();
     }
 
