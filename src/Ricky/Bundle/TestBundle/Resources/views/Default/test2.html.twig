@@ -1,0 +1,24 @@
+{% extends "::base.html.twig"%}
+
+{%block body%}
+<div>
+    category_id: {{category.id}}
+</div>
+<div>
+    category_name: {{category.name}}
+</div>
+
+{% for post in category.posts%}
+<div>
+    post_id: {{post.id}}<br/>
+    post_title: {{post.title}}<br/>
+    post_content: {{post.content}}<br/>
+    tags:
+    {% for tag in post.tags%}
+    <div>
+        tag: {{tag.name}}
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
+{%endblock%}

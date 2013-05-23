@@ -1,0 +1,4 @@
+ricky_test:
+    resource: "@RickyTestBundle/Controller/"
+    type:     annotation
+    prefix:   /
