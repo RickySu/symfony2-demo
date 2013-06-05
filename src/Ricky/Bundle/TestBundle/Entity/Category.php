@@ -3,6 +3,7 @@
 namespace Ricky\Bundle\TestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Category
@@ -31,7 +32,7 @@ class Category
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message = "欄位不能為空白")
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -76,7 +77,7 @@ class Category
     {
         $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Add posts
      *
@@ -86,7 +87,7 @@ class Category
     public function addPost(\Ricky\Bundle\TestBundle\Entity\Post $posts)
     {
         $this->posts[] = $posts;
-    
+
         return $this;
     }
 
@@ -103,7 +104,7 @@ class Category
     /**
      * Get posts
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPosts()
     {

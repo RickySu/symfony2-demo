@@ -1,0 +1,7 @@
+{% extends "::base.html.twig"%}
+
+{%block body%}
+    {% for error in errors%}
+     <div>{{error.message}}</div>
+    {% endfor %}
+{%endblock%}
