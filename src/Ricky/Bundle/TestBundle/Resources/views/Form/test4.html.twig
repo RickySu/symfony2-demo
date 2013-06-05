@@ -1,0 +1,29 @@
+{% extends "::base.html.twig"%}
+
+{%block body%}
+<!-- render form tag with class -->
+{{ form_start(form, {'attr': {'class': 'my-class'} }) }}
+{% for formRow in form %}
+    <!-- 如果不是 hidden 欄位才 render -->
+    {%if "hidden" not in formRow.vars.block_prefixes %}
+        <div> <!-- label -->
+            <div>label欄位內容:{{formRow.vars.label}}</div>
+            <!-- render label -->
+            {{form_label(formRow, label|default(null), {'label_attr':{'class': 'label-class'}})}}
+        </div>
+        <div> <!-- 表單元件 -->
+            {{form_widget(formRow)}}
+        </div>
+        {% if formRow.vars.errors is defined %}
+            <div>  <!-- 錯誤訊息 -->
+            {%for error in formRow.vars.errors%}
+                <div>{{error.message}}</div>
+            {%endfor%}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+<input type ="submit" value="送出" />
+{{ form_rest(form) }} <!--將剩下還沒 render 的欄位輸出(hidden 欄位)-->
+{{ form_end(form) }}
+{% endblock %}
