@@ -88,7 +88,7 @@ class FormController extends Controller
         $form = $this->createFormBuilder()
             ->add('name', 'text')
             ->add('email', 'email')
-            ->add('phone', 'text',array(
+            ->add('phone', 'text', array(
                 'label' => '您的電話',
                 'constraints' => array(
                      new Constraints\Regex(array(
@@ -145,6 +145,8 @@ class FormController extends Controller
               ->getForm();
         $form->handleRequest($this->getRequest());  //處理 post
         if($form->isValid()){         //驗證表單
+            //$form->getData()['form1']   form1 的 post data
+            //$form->getData()['form2']   form2 的 post data
             return new Response(nl2br(str_replace(' ','&nbsp;',print_r($form->getData(),true))));
         }
         return array('form' => $form->createView());
