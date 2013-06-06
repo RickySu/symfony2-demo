@@ -118,5 +118,36 @@ class FormController extends Controller
         }
         return array('form' => $form->createView());
     }
-    
+
+    /**
+     * @Route("/test6")
+     * @Template()
+     */
+    public function test6Action()
+    {
+        $form = $this->createForm(new FormType\TestFileType());
+        $form->handleRequest($this->getRequest());  //處理 post
+        if($form->isValid()){         //驗證表單
+            return new Response("ok");
+        }
+        return array('form' => $form->createView());
+    }
+
+    /**
+     * @Route("/test7")
+     * @Template()
+     */
+    public function test7Action()
+    {
+        $form = $this->createFormBuilder()
+              ->add('form1', new FormType\TestType())
+              ->add('form2', new FormType\TestFileType())
+              ->getForm();
+        $form->handleRequest($this->getRequest());  //處理 post
+        if($form->isValid()){         //驗證表單
+            return new Response(nl2br(str_replace(' ','&nbsp;',print_r($form->getData(),true))));
+        }
+        return array('form' => $form->createView());
+    }
+
 }
