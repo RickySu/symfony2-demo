@@ -1,0 +1,10 @@
+{%extends "::base.html.twig" %}
+
+{% block javascripts %}
+{% javascripts
+    '@js/jquery.js'
+    'js/main.js'
+%}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}
