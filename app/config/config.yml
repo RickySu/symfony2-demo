@@ -68,3 +68,17 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+propel:
+    path:                     "%kernel.root_dir%/../vendor/propel"
+    phing_path:              "%kernel.root_dir%/../vendor/phing"
+    logging:                  %kernel.debug%
+    build_properties:
+        propel.mysql.tableType:     InnoDB
+    dbal:
+        driver:               %database_driver%
+        user:                 %database_user%
+        password:             %database_password%
+        dsn:                  %database_driver%:host=%database_host%;dbname=%database_name%;charset=UTF8 
+        options:              {}
+        attributes:           {}
