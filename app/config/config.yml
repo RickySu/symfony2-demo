@@ -79,6 +79,6 @@ propel:
         driver:               %database_driver%
         user:                 %database_user%
         password:             %database_password%
-        dsn:                  %database_driver%:host=%database_host%;dbname=%database_name%;charset=UTF8 
+        dsn:                  %database_driver%:host=%database_host%;dbname=%database_name%;charset=UTF8
         options:              {}
         attributes:           {}

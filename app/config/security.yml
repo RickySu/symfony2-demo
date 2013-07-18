@@ -1,7 +1,7 @@
 security:
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
-
+        Symfony\Component\Security\Core\User\User:     plaintext
+        Ricky\Bundle\TestBundle\Security\User\MyUser:  plaintext
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
@@ -11,8 +11,10 @@ security:
             memory:
                 users:
                     user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+                    admin: { password: adminpass, roles: [ 'ROLE_SUPER_ADMIN' ] }
 
+        my_secured:
+            id:     my_user_provider
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
@@ -22,8 +24,23 @@ security:
             pattern:  ^/demo/secured/login$
             security: false
 
+        my_secured_login:
+            pattern:  ^/secured/login$
+            security: false
+
+        my_secured_area:
+            pattern:    ^/secured/
+            provider:   my_secured
+            form_login:
+                check_path: _my_secured_check
+                login_path: _my_secured_login
+            logout:
+                path:   _my_secured_logout
+                target: _demo
+
         secured_area:
             pattern:    ^/demo/secured/
+            provider:   in_memory
             form_login:
                 check_path: _security_check
                 login_path: _demo_login
