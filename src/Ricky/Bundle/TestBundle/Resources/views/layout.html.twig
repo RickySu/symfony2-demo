@@ -1,0 +1,11 @@
+{% extends 'AcmeDemoBundle::layout.html.twig' %}
+
+{% block content_header %}
+    <ul id="menu">
+        {% block content_header_more %}
+            <li><a href="{{ path('_my_secured_index') }}">My Secure Test Home</a></li>
+        {% endblock %}
+    </ul>
+
+    <div style="clear: both"></div>
+{% endblock %}

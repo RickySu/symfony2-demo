@@ -12,7 +12,7 @@ class SecurityController extends Controller
 {
 
     /**
-     * @Route("/secured/", name="_my_secured_index")
+     * @Route("/secured", name="_my_secured_index")
      * @Template()
      */
     public function indexAction()
@@ -21,11 +21,11 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/demo/secured/test1")
+     * @Route("/demo/secured/test")
      * @Route("/secured/test1", name="_my_secured_test1")
      * @Template()
      */
-    public function test1Action()
+    public function testAction()
     {
         return array();
     }

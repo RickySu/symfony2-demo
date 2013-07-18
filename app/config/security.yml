@@ -15,6 +15,7 @@ security:
 
         my_secured:
             id:     my_user_provider
+
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
@@ -36,7 +37,7 @@ security:
                 login_path: _my_secured_login
             logout:
                 path:   _my_secured_logout
-                target: _demo
+                target: _my_secured_index
 
         secured_area:
             pattern:    ^/demo/secured/

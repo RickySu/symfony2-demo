@@ -1,9 +1,11 @@
-{% extends "::base.html.twig"%}
+{% extends 'RickyTestBundle::layout.html.twig' %}
 
-{%block body%}
+{%block content%}
     <div style="text-align:right"><a href="{{path('_my_secured_logout')}}">Logout</a></div>
     {%if is_granted('IS_AUTHENTICATED_ANONYMOUSLY')%}<div>IS_AUTHENTICATED_ANONYMOUSLY</div>{%endif%}
     {%if is_granted('ROLE_SUPER_ADMIN')%}<div>ROLE_SUPER_ADMIN</div>{%endif%}
     {%if is_granted('ROLE_ADMIN')%}<div>ROLE_ADMIN</div>{%endif%}
     {%if is_granted('ROLE_USER')%}<div>ROLE_USR</div>{%endif%}
 {%endblock%}
+
+{% set code = code(_self) %}

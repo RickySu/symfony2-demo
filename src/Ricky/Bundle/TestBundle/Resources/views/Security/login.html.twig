@@ -1,6 +1,7 @@
-{% extends "::base.html.twig"%}
+{% extends 'RickyTestBundle::layout.html.twig' %}
 
-{%block body%}
+
+{%block content%}
     <h1 class="title">Login</h1>
 
     <p>
@@ -31,3 +32,5 @@
         </button>
     </form>
 {% endblock %}
+
+{% set code = code(_self) %}
